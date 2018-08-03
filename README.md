@@ -14,3 +14,4 @@ curl -XPOST 'http://localhost:9200/node-modules/_doc/_bulk' -H 'Content-Type: ap
 
 - Many components are simply not customizable. SearchBox for instance, has static markup. There is no way to replace
   the markup with custom markup.
+- Certain components require data to be indexed in a specific way

@@ -8,6 +8,8 @@ import {
   SearchBox
 } from "searchkit";
 
+import poweredBy from "./images/powered-by@2x.png";
+
 import Facets from "./Facets";
 import Results from "./Results";
 import Totals from "./Totals";
@@ -37,7 +39,6 @@ searchkit.addDefaultQuery(query => {
 class App extends SearchkitComponent {
   render() {
     const packageIcon = "";
-    const poweredBy = "";
 
     return (
       <SearchkitProvider searchkit={searchkit}>
@@ -90,10 +91,7 @@ class App extends SearchkitComponent {
                     <div className="results__header">
                       <Totals />
                       <div className="results__powered-by powered-by">
-                        <img
-                          src="https://app.swiftype.com/assets/embed/powered-by@2x.png"
-                          alt="Powered by Swiftype"
-                        />
+                        <img src={poweredBy} alt="Powered by Swiftype" />
                       </div>
                     </div>
                     <div className="results__body">

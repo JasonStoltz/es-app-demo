@@ -18,8 +18,9 @@ curl -XPOST 'http://localhost:9200/node-modules/_doc/_bulk' -H 'Content-Type: ap
   by a component. IE, in the HitsStats component, it doesn't have access to paging
   from and to. Had to create a completely custom component and dig for the location of that
   state.
-- (+) Adding a "Refinement" filter component automatically adds that to your query. No need to
-  add a corresponding "agg" to your query.
+- Adding a "Refinement" filter component automatically adds that to your query. No need to
+  add a corresponding "agg" to your query. Ditto for adding "highlights" to Hits, or
+  "size" to Hits, it automatically builds your query from those options.
 
 # Raw ES challenges
 

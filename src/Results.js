@@ -46,41 +46,59 @@ function Lisence({ value, children }) {
   return <div className="result__lisence">{value}</div>;
 }
 
+class Result {
+  constructor(result) {
+    this.result = result;
+    this.highlight = result.highlight || {};
+    this._source = result._source || {};
+  }
+
+  getSnippet(key) {
+    return this.highlight[key] || this._source[key];
+  }
+
+  get(key) {
+    return this._source[key];
+  }
+}
+
 const HitItem = props => {
   const result = props.result._source;
+  const result2 = new Result(props.result);
+
   return (
-    <div className="result" key={result.name}>
+    <div className="result" key={result2.get("name")}>
       <div className="result__header">
         <a
           className="result__title"
-          href={`https://www.npmjs.com/package/${result.name}`}
+          href={`https://www.npmjs.com/package/${result2.get("name")}`}
           target="_blank"
           rel="noopener noreferrer"
           onClick={e => trackClick("id")}
-          dangerouslySetInnerHTML={createMarkup(result.name)}
+          dangerouslySetInnerHTML={createMarkup(result2.getSnippet("name"))}
         />
-        <Lisence value={result.license} />
+        <Lisence value={result2.get("license")} />
       </div>
       <div className="result__body">
-        <Description value={result.description} />
+        <Description value={result2.getSnippet("description")} />
         <ul className="result__details">
-          <LineItem label="Version" value={result.version}>
+          <LineItem label="Version" value={result2.get("version")}>
             {value => <span className="result__version">{value}</span>}
           </LineItem>
-          <LineItem label="Home Page" value={result.homepage}>
+          <LineItem label="Home Page" value={result2.get("homepage")}>
             {value => (
-              <a target="_blank subtle-link" href={result.homepage}>
+              <a target="_blank subtle-link" href={result2.get("homepage")}>
                 {value}
               </a>
             )}
           </LineItem>
-          <LineItem label="Dependencies" value={result.dependencies}>
+          <LineItem label="Dependencies" value={result2.get("dependencies")}>
             {values => values.map(value => <span key={value}>{value}</span>)}
           </LineItem>
-          <LineItem label="License" value={result.license}>
+          <LineItem label="License" value={result2.get("license")}>
             {value => value.join(", ")}
           </LineItem>
-          <LineItem label="Keywords" value={result.keywords}>
+          <LineItem label="Keywords" value={result2.get("keywords")}>
             {values =>
               values.map((value, index) => (
                 <span key={`${value}-${index}`}>{value}</span>
@@ -91,7 +109,7 @@ const HitItem = props => {
       </div>
       <div className="result__footer">
         <div className="result__owner">
-          <Owners label="Owners" value={result.owners}>
+          <Owners label="Owners" value={result2.get("owners")}>
             {value => value.join(", ")}
           </Owners>
         </div>
@@ -101,5 +119,11 @@ const HitItem = props => {
 };
 
 export default function Results() {
-  return <Hits itemComponent={HitItem} />;
+  return (
+    <Hits
+      hitsPerPage={10}
+      itemComponent={HitItem}
+      highlightFields={["name", "description"]}
+    />
+  );
 }

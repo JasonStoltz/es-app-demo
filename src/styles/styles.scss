@@ -598,4 +598,34 @@ a.subtle-link {
       }
     }
   }
+
+  .sk-pagination-navigation {
+    .sk-toggle {
+      display: flex;
+      justify-content: center;
+      margin: 12px 0;
+
+      font-size: 12px;
+      font-family: "Arial";
+
+      .sk-toggle-option {
+        color: #3a56e4;
+        cursor: pointer;
+        min-width: 28px;
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+        list-style: none;
+        float: left;
+        margin-right: 8px;
+
+        &.is-active,
+        &.is-disabled {
+          color: #4f4f4f;
+          cursor: default;
+          font-weight: bold;
+        }
+      }
+    }
+  }
 }

@@ -3,9 +3,9 @@ import {
   SearchkitManager,
   SearchkitProvider,
   SearchBox,
-  MultiMatchQuery,
-  Hits
+  MultiMatchQuery
 } from "searchkit";
+import Results from "./Results";
 
 const searchFields = [
   "license",
@@ -96,7 +96,7 @@ class App extends Component {
                       </div> */}
                     </div>
                     <div className="results__body">
-                      <Hits />
+                      <Results />
                       {/* <Results
                         results={searchResults.results}
                         queryState={queryState}

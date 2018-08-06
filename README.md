@@ -14,4 +14,14 @@ curl -XPOST 'http://localhost:9200/node-modules/_doc/_bulk' -H 'Content-Type: ap
 
 - Many components are simply not customizable. SearchBox for instance, has static markup. There is no way to replace
   the markup with custom markup.
-- Certain components require data to be indexed in a specific way
+- Hard to create a completely custom component, or get access to other state not specifically required
+  by a component. IE, in the HitsStats component, it doesn't have access to paging
+  from and to. Had to create a completely custom component and dig for the location of that
+  state.
+- (+) Adding a "Refinement" filter component automatically adds that to your query. No need to
+  add a corresponding "agg" to your query.
+
+# Raw ES challenges
+
+- Fields must not be analyzed to be used as filters, BUT, all fields are indexed with
+  a "keyword" field by default.

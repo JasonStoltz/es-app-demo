@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import {
+  MultiMatchQuery,
+  Pagination,
+  SearchkitComponent,
   SearchkitManager,
   SearchkitProvider,
-  SearchBox,
-  MultiMatchQuery
+  SearchBox
 } from "searchkit";
+
+import Facets from "./Facets";
 import Results from "./Results";
+import Totals from "./Totals";
 
 const searchFields = [
   "license",
@@ -29,7 +34,7 @@ searchkit.addDefaultQuery(query => {
     })
   );
 });
-class App extends Component {
+class App extends SearchkitComponent {
   render() {
     const packageIcon = "";
     const poweredBy = "";
@@ -80,20 +85,16 @@ class App extends Component {
 
               <div className="search-demo__body">
                 <div className="search-results">
-                  {/* <Facets
-                    facets={searchResults.facets}
-                    filters={searchResults.filters}
-                    queryState={queryState}
-                  /> */}
+                  <Facets />
                   <div className="results">
                     <div className="results__header">
-                      {/* <Totals {...searchResults.pageState} />
+                      <Totals />
                       <div className="results__powered-by powered-by">
                         <img
                           src="https://app.swiftype.com/assets/embed/powered-by@2x.png"
                           alt="Powered by Swiftype"
                         />
-                      </div> */}
+                      </div>
                     </div>
                     <div className="results__body">
                       <Results />
@@ -104,6 +105,7 @@ class App extends Component {
                       /> */}
                     </div>
                     <div className="results__footer">
+                      <Pagination showNumbers={true} />
                       {/* <Pagination
                         {...searchResults.pageState}
                         onPage={searchActions.updatePage}

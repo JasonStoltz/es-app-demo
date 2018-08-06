@@ -501,6 +501,10 @@ a.subtle-link {
 
 // Customizations for SearchKit
 
+.results__header {
+  margin-bottom: 15px;
+}
+
 .search-demo {
   &__input-wrapper {
     display: block;
@@ -566,5 +570,32 @@ a.subtle-link {
 
   .sk-search-box__action {
     display: none;
+  }
+
+  .facets {
+    padding: 2rem 0;
+    min-width: 250px;
+    .sk-panel {
+      & + & {
+        margin-top: 30px;
+      }
+    }
+
+    .sk-panel__header {
+      text-transform: uppercase;
+      font-size: 12px;
+      color: #8b9bad;
+      letter-spacing: 1px;
+    }
+
+    .sk-panel__content {
+      line-height: 1.5;
+      font-size: 13px;
+      margin: 13px 0;
+
+      li {
+        list-style-type: none;
+      }
+    }
   }
 }

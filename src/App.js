@@ -8,11 +8,13 @@ import {
   SearchBox
 } from "searchkit";
 
+import packageIcon from "./icons/icon-package.svg";
 import poweredBy from "./images/powered-by@2x.png";
 
 import Facets from "./Facets";
 import Results from "./Results";
 import Totals from "./Totals";
+import Wrapper from "./Wrapper";
 
 const searchFields = [
   "license",
@@ -38,13 +40,11 @@ searchkit.addDefaultQuery(query => {
 });
 class App extends SearchkitComponent {
   render() {
-    const packageIcon = "";
-
     return (
       <SearchkitProvider searchkit={searchkit}>
         <div>
           <div className="site-background" />
-          <div className={`search-demo live-filtering active-search`}>
+          <Wrapper>
             <div className="search-demo__content">
               <div className="search-demo__header">
                 <div className="search-demo__headings">
@@ -113,7 +113,7 @@ class App extends SearchkitComponent {
                 </div>
               </div>
             </div>
-          </div>
+          </Wrapper>
         </div>
       </SearchkitProvider>
     );

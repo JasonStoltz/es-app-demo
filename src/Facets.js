@@ -45,7 +45,7 @@ export default function Facets() {
     <div className="facets with-counts">
       <RefinementListFilter
         showMore={false}
-        size="10"
+        size={10}
         id="licenseFacet"
         title="License"
         field="license.keyword"
@@ -54,7 +54,7 @@ export default function Facets() {
       />
       <RefinementListFilter
         showMore={false}
-        size="10"
+        size={10}
         id="keywordsFacet"
         title="keywords"
         field="keywords.keyword"
@@ -63,7 +63,7 @@ export default function Facets() {
       />
       <RefinementListFilter
         showMore={false}
-        size="10"
+        size={10}
         id="dependenciesFacet"
         title="dependencies"
         field="dependencies.keyword"

@@ -28,7 +28,9 @@ const searchFields = [
   "owners"
 ];
 
-const searchkit = new SearchkitManager("http://localhost:9200/");
+const searchkit = new SearchkitManager(
+  process.env.REACT_APP_ES_URL || "http://localhost:9200/"
+);
 
 searchkit.addDefaultQuery(query => {
   return query.addQuery(

@@ -34,7 +34,8 @@ searchkit.addDefaultQuery(query => {
   return query.addQuery(
     MultiMatchQuery("", {
       fields: searchFields,
-      operator: "OR"
+      operator: "OR",
+      fuzziness: "auto"
     })
   );
 });
@@ -60,28 +61,16 @@ class App extends SearchkitComponent {
                     <img src={poweredBy} alt="Powered by Swiftype" />
                   </h3>
                 </div>
-                <div className="search-demo__input-wrapper">
-                  <SearchBox
-                    searchOnChange={true}
-                    queryBuilder={term => {
-                      return MultiMatchQuery(term, {
-                        fields: searchFields,
-                        operator: "OR"
-                      });
-                    }}
-                  />
-                  {/* <input
-                    className="search-demo__text-input"
-                    placeholder="Search node packages&#8230;"
-                    value={query}
-                    onChange={e => searchActions.updateQuery(e.target.value)}
-                  />
-                  <input
-                    type="submit"
-                    value="Search"
-                    className="button search-demo__submit"
-                  /> */}
-                </div>
+                <SearchBox
+                  searchOnChange={true}
+                  queryBuilder={term => {
+                    return MultiMatchQuery(term, {
+                      fields: searchFields,
+                      operator: "OR",
+                      fuzziness: "auto"
+                    });
+                  }}
+                />
               </div>
 
               <div className="search-demo__body">

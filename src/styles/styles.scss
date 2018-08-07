@@ -168,43 +168,6 @@ a.subtle-link {
     margin-bottom: 0.5em;
   }
 
-  &__input-wrapper {
-    display: flex;
-    max-width: 80vw;
-    border-radius: 6px;
-    border: 1px solid #dce2e9;
-    background: white;
-    overflow: hidden;
-    justify-content: center;
-    height: 80px;
-    align-items: stretch;
-    padding: 0.5rem;
-    margin: 60px auto 0 auto;
-    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
-    transition-property: margin, max-width;
-    transition: 0.5s $easeInOutCubic;
-
-    &.focus {
-      border: 1px solid $linkColor;
-
-      .active-search & {
-        border-top-color: white;
-        border-right-color: white;
-        border-left-color: white;
-      }
-    }
-
-    .active-search & {
-      border-radius: 0px;
-      border-top-color: white;
-      border-right-color: white;
-      border-left-color: white;
-      max-width: calc(100% + 0px);
-      width: 100%;
-      margin: auto;
-    }
-  }
-
   &__text-input {
     width: 100%;
     border: none;
@@ -504,57 +467,46 @@ a.subtle-link {
   margin-bottom: 15px;
 }
 
-.search-demo {
-  &__input-wrapper {
-    display: block;
-    max-width: auto;
-    border-radius: 0px;
-    border: 0px;
-    overflow: auto;
-    height: auto;
-    padding: 0;
-    margin: 0;
-    box-shadow: white;
-    transition: none;
+.sk-search-box {
+  form {
+    display: flex;
+    max-width: 80vw;
+    border-radius: 6px;
+    border: 1px solid #dce2e9;
+    background: white;
+    overflow: hidden;
+    justify-content: center;
+    height: 80px;
+    align-items: stretch;
+    padding: 0.5rem;
+    margin: 60px auto 0 auto;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+    transition-property: margin, max-width;
+    transition: 0.5s $easeInOutCubic;
 
-    & > .sk-search-box > form {
-      display: flex;
-      max-width: 80vw;
-      border-radius: 6px;
-      border: 1px solid #dce2e9;
-      background: white;
-      overflow: hidden;
-      justify-content: center;
-      height: 80px;
-      align-items: stretch;
-      padding: 0.5rem;
-      margin: 60px auto 0 auto;
-      box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
-      transition-property: margin, max-width;
-      transition: 0.5s $easeInOutCubic;
-
-      &.focus {
-        border: 1px solid $linkColor;
-
-        .active-search & {
-          border-top-color: white;
-          border-right-color: white;
-          border-left-color: white;
-        }
-      }
+    &.focus {
+      border: 1px solid $linkColor;
 
       .active-search & {
-        border-radius: 0px;
         border-top-color: white;
         border-right-color: white;
         border-left-color: white;
-        max-width: calc(100% + 0px);
-        width: 100%;
-        margin: auto;
       }
     }
-  }
 
+    .active-search & {
+      border-radius: 0px;
+      border-top-color: white;
+      border-right-color: white;
+      border-left-color: white;
+      max-width: calc(100% + 0px);
+      width: 100%;
+      margin: auto;
+    }
+  }
+}
+
+.search-demo {
   .sk-search-box__text {
     width: 100%;
     border: none;
